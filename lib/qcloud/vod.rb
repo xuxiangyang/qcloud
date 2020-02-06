@@ -11,9 +11,7 @@ module Qcloud
 
     def confirm_events(event_handles, **params)
       raise "event_handles length must less or equal than 16" if event_handles.length > 16
-      event_handles.each_with_index do |event_handle, i|
-        params["EventHandles.#{i}"] = event_handle
-      end
+      params["EventHandles"] = event_handles
       req = post("ConfirmEvents", "2018-07-17", params)
       JSON.parse(req.body)
     end
