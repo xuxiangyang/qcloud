@@ -1,6 +1,7 @@
 require "qcloud/version"
 require 'qcloud/service'
 require 'qcloud/live'
+require 'qcloud/vod'
 require 'json'
 
 module Qcloud
