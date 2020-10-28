@@ -31,7 +31,7 @@ module Qcloud
       JSON.parse(req.body)
     end
 
-    def create_common_mix_stream(mix_stream_session_id:, input_stream_list:, output_params:, mix_stream_template_id: nil, control_params: nil)
+    def create_common_mix_stream(mix_stream_session_id:, input_stream_list:, output_params:, mix_stream_template_id: 0, control_params: {})
       params = {
         MixStreamSessionId: mix_stream_session_id,
         InputStreamList: input_stream_list,
