@@ -1,3 +1,4 @@
+require 'active_support/all'
 require "qcloud/version"
 require 'qcloud/service'
 require 'qcloud/live'

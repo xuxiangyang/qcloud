@@ -30,5 +30,18 @@ module Qcloud
       req = post("DeleteLiveRecord", "2018-08-01", params)
       JSON.parse(req.body)
     end
+
+    def create_common_mix_stream(mix_stream_session_id:, input_stream_list:, output_params:, mix_stream_template_id: nil, control_params: nil)
+      params = {
+        MixStreamSessionId: mix_stream_session_id,
+        InputStreamList: input_stream_list,
+        OutputParams: output_params,
+        MixStreamTemplateId: mix_stream_template_id,
+        ControlParams: control_params,
+      }.deep_transform_keys { |k| k.to_s.camelize }
+
+      req = post("CreateCommonMixStream", "2018-08-01", params)
+      JSON.parse(req.body)
+    end
   end
 end
