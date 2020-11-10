@@ -43,5 +43,14 @@ module Qcloud
       req = post("CreateCommonMixStream", "2018-08-01", params)
       JSON.parse(req.body)
     end
+
+    def cancel_common_mix_stream(mix_stream_session_id)
+      params = {
+        MixStreamSessionId: mix_stream_session_id,
+      }.deep_transform_keys { |k| k.to_s.camelize }
+
+      req = post("CancelCommonMixStream", "2018-08-01", params)
+      JSON.parse(req.body)
+    end
   end
 end
