@@ -4,14 +4,12 @@ require 'net/http'
 require 'net/https'
 module Qcloud
   class Service
-    attr_accessor :host, :region, :secret_id, :secret_key, :http
+    attr_accessor :host, :region, :secret_id, :secret_key
     def initialize(host, region, secret_id, secret_key)
       @host = host
       @region = region
       @secret_id = secret_id
       @secret_key = secret_key
-      @http = Net::HTTP.new(host, 443)
-      @http.use_ssl = true
     end
 
     def post(action, version, params = {}, headers = {})
@@ -38,6 +36,8 @@ module Qcloud
 
       req = Net::HTTP::Post.new("/", headers)
       req.body = body
+      http = Net::HTTP.new(host, 443)
+      http.use_ssl = true
       http.request(req)
     end
   end
