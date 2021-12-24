@@ -7,4 +7,15 @@ require 'json'
 
 module Qcloud
   class Error < StandardError; end
+
+  class JsonParseError < Error
+    def initialize(message, body)
+      @body = body
+      super(message)
+    end
+
+    def raven_context
+      { body: @body }
+    end
+  end
 end

@@ -42,6 +42,8 @@ module Qcloud
 
       req = post("CreateCommonMixStream", "2018-08-01", params)
       JSON.parse(req.body)
+    rescue JSON::ParserError => e
+      raise JsonParseError.new(e.message, req.body)
     end
 
     def cancel_common_mix_stream(mix_stream_session_id)
